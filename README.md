@@ -18,9 +18,14 @@ We are hoping to accurately predict the performance of up-and-coming movies as w
 
 ## Data: 
 
-https://www.kaggle.com/ruchi798/movies-on-netflix-prime-video-hulu-and-disney 
+Dataset 1: https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset 
 
-https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset 
+Dataset 2: https://www.kaggle.com/ruchi798/movies-on-netflix-prime-video-hulu-and-disney 
+
+A visualization of dataset 2: 
+
+![Movies available on streaming applications](https://user-images.githubusercontent.com/40035500/138931024-bf67462e-3a68-47ad-8f71-b2909f1c60cb.png)
+
 
 ## References:
 
