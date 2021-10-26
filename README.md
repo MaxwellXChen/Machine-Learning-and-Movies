@@ -1,5 +1,5 @@
 
-For CS4641 Project Team. Members: Maxwell Chen, Brian Epstein, Rachel Kaplan, Kaitlin Evans, Olena Buriakova
+For CS4641 Project Team. Members: Maxwell Chen, Brian Epstein, Rachel Kaplan, Kaitlin Evans
 
 ## Introduction/Background:
 
@@ -47,9 +47,7 @@ We should have all data preprocessed and cleaned as well as a functioning model 
 
 Maxwell Chen - Data preprocessing and cleaning, setting up the NN, Maintain GitHub page
 
-Rachel Kaplan - Research 
-
-Olena Buriakova - Create and edit videos
+Rachel Kaplan - Research, Create and edit videos
 
 Kaitlin Evans - Outline and edit reports
 
