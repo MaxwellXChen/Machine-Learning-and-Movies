@@ -13,7 +13,7 @@ The movie industry is an essential part of recreation and entertainment for bill
 Given various parameters of a movie, such as genre, budget, runtime, and production country, our project aims to predict the Metascore and IMDb rating of the film. This serves to provide movie producers with the information that will be useful in predicting the critical and commercial success of projects that are in development, allowing them to optimize their movie’s parameters to maximize ratings. 
 
 ### Data Collection 
-The data used for our project was collected using the kaggle dataset "IMDb movies extensive dataset". This datset contains 85,855 movies and 22 unique attributes. The movies chosen had more than 100 votes as of 01/01/2020.
+The data used for our project was collected using the kaggle dataset "IMDb movies extensive dataset". This dataset contains 85,855 movies and 22 unique attributes. The movies chosen had more than 100 votes as of 01/01/2020.
 
 ### Methods
 
