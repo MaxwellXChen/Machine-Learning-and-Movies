@@ -1,4 +1,3 @@
-# Machine Learning and Movies  
  <p align="center"> Team Members: <br/> Maxwell Chen, Brian Epstein, Rachel Kaplan, Kaitlin Evans </p>
 
 ### Reports: <br />
