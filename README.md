@@ -7,6 +7,7 @@
 ## Midterm Report
 
 ### Introduction/Background
+The movie industry is an essential part of recreation and entertainment for billions of people. Over the past couple of decades, however, the industry has completely changed. The internet has introduced new ways for movies and shows to be reviewed and rated. Now any person has the ability to rate and review a film or show they have watched and share that rating with others who may be interested. Entertainment database IMDb has become “the most popular website for movie ratings and movie reviews.”(Kharb, 2020) These ratings, along with ones from professional entertainment critics can decide how well a production performs and therefore the profit that it generates. 
 
 ### Problem Definition 
 
