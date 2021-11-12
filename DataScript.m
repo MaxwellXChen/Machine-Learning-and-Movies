@@ -9,7 +9,11 @@ data = reduceColChar(data, data.budget);
 data = string2dollar(data, data.budget,'budget');
 data = string2dollar(data, data.usa_gross_income,'usa_gross_income');
 data = string2dollar(data, data.worlwide_gross_income,'worlwide_gross_income');
+data = commaDetection(data, data.genre,'genre');
+data = commaDetection(data, data.country,'country');
+data = commaDetection(data, data.language,'language');
 
+%% Export
 writetable(data,'movieData.csv')
 
 
@@ -77,4 +81,19 @@ for i = 1:length(col)
 end
 T{:,name} = col;
 T(ind,:) = [];
+end
+
+function [T] = commaDetection(T, col, name)
+%%converts string to number of entries.
+ind = [];
+colN = ones(length(col),1)
+
+for i = 1:length(col)
+    string = col{i};
+    comma = 1;
+    comma = length(strfind(string,',')) + comma;
+    colN(i) = comma;
+end
+T{:,name} = num2cell(colN);
+
 end
