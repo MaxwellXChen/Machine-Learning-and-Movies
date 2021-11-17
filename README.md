@@ -86,7 +86,9 @@ An example of our scaling method:
 
 For the neural network, we are using Keras and Tensorflow, especially Keras’ Sequential model-building library. 
 Here's our model:
+
 ![NN Model](https://user-images.githubusercontent.com/41342635/142129665-46745aeb-0ed9-480a-8ddc-ee3076b6fbbd.png)
+
 This is our neural network as it currently stands, with two hidden layers and mainly sigmoid activation functions, since the final prediction would be scaled between 0 and 1. You can see a lot of comments demonstrating the many different loss functions, optimizers, and even additional dense layers we tried implementing to hopefully improve the model. We plan on adding more function arguments to the model, such as number_of_layers, activation_function, etc. that would allow us to quickly modify the model as needed without having to comment out code and replacing different lines, ultimately streamlining the tuning process.
 
 The hyperparameters current stand as is because it produces the lowest loss of around 0.0025 when training finalizes.
