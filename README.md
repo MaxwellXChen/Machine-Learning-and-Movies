@@ -82,6 +82,7 @@ Another method we are using to approach this problem is to use a multilayer perc
 To formulate the data into an x_train variable, we are normalizing everything using the MinMaxScaler function from sklearn.preprocessing, with the exception of IMDB and Metascores (used in y_train and y_test), as we simply normalized them by dividing all data points by 10 and 100 respectively because IMDB is scored up to 10 and Metascore is scored up to 100.
 
 An example of our scaling method:
+
 ![MinMaxScaler Example](https://user-images.githubusercontent.com/41342635/142129599-353b8e47-0361-4427-b4b1-b9f65ee89e4f.png)
 
 For the neural network, we are using Keras and Tensorflow, especially Keras’ Sequential model-building library. 
