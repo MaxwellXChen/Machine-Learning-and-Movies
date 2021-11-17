@@ -67,6 +67,10 @@ The explained variance of the first two principal components was [0.37943203, 0.
 The explained variance of the first principal component is below 40%, and the second is close to 10%, indicating that just the first two principal components do not retain much of the variance. While it was helpful to visualize our data, we decided that reducing the data to only the first two principal components would not be a useful model.
 
 This indicated that a larger number of principal components were required for our data. We then chose to run PCA again, this time looking at only the first two principal components. We ran the model with the goal of explaining 95% of the variance. 
+
+![ExpectedVariance_2PCs](https://i.ibb.co/VmpzQwt/Expected-Var-2-PCs.png)
+
+![ExpectedVariance_0.95](https://i.ibb.co/Fkrbsgh/Expected-Var0-95.png)
  
 After performing PCA, the results determined that the first 7 principal components retained 95% of the variance in the data. In order to retain 95% of the variance, we need 7 features, which are aligned with our results from forward and backward feature selection.
 
