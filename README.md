@@ -60,6 +60,9 @@ Looking at these results, it makes sense that both scores returned the same feat
 
 ##### PCA
 PCA was performed on the dataset to determine patterns in the data. First, we calculated the first and second principal components to visualize the data and identify any strong patterns. Reducing the number of features from 15 to 2 was helpful in visualizing our data, but the results determined that 2 features was not enough to retain a large portion of the variance in the data. Calculating the first and second principal components resulted in a very low explained variance, which indicated that only a small amount of variance was explained by the first two principal components.
+
+![PCA_Visualization](https://i.ibb.co/9nmX0XS/PCA-Visualization.png)
+
 The explained variance of the first two principal components was [0.37943203, 0.12747816]
 The explained variance of the first principal component is below 40%, and the second is close to 10%, indicating that just the first two principal components do not retain much of the variance. While it was helpful to visualize our data, we decided that reducing the data to only the first two principal components would not be a useful model.
 
