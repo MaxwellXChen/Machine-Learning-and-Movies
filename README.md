@@ -44,7 +44,11 @@ The data clean up resulted in a dataset containing 6083 movies with 15 features.
 ##### LASSO
 LASSO selection was run on the preprocessed data with the goal of identifying important features to include in the data we run through our model. The input data for the LASSO selection model was first normalized, as were the output scores for both IMDb and Metascore. As shown in the figure below, for IMDb score, number of votes, duration, and budget were the three most important features.
 
+![LassoIMDb](https://i.ibb.co/FXWM4vb/Lasso-IMDb.png)
+
 The features selected by LASSO selection for Metascore were the same as those for IMDb, but the coefficients for the three categories were slightly higher than for IMDb. The normalized importances for each feature is shown in the graph below.
+
+![LassoMetascore](https://i.ibb.co/FXWM4vb/Lasso-IMDb.png)
 
 ##### Feature selection
 Forward and backward feature selection were run twice, once for the IMDb score and once for Metascore. Both targets returned the following features.
