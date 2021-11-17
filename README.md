@@ -52,8 +52,10 @@ The features selected by LASSO selection for Metascore were the same as those fo
 
 ##### Feature selection
 Forward and backward feature selection were run twice, once for the IMDb score and once for Metascore. Both targets returned the following features.
+
 <img width="850" alt="imdb" src="https://user-images.githubusercontent.com/40035500/142087807-2060bd86-fa6c-427a-aacc-30d96601e10d.png">
 <br/>
+
 Looking at these results, it makes sense that both scores returned the same features as they should be impacted by the same information since they are both calculating how well a movie performed. It is also interesting that votes, duration, and budget are shown as 3 of the top 4 on both forward and backward feature selection. This leads us to believe that these are the most important features to consider when building our model. 
 
 ##### PCA
