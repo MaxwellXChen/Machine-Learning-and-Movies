@@ -49,6 +49,7 @@ LASSO selection was run on the preprocessed data with the goal of identifying im
 
 The features selected by LASSO selection for Metascore were the same as those for IMDb, but the coefficients for the three categories were slightly higher than for IMDb. The normalized importances for each feature is shown in the graph below.
 
+![LassoMetascore](https://i.ibb.co/FXWM4vb/Lasso-IMDb.png)
 
 Forward and backward feature selection were run twice, once for the IMDb score and once for Metascore. Both targets returned the following features.
 
