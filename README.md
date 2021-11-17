@@ -45,7 +45,7 @@ Data preprocessing:
 
 LASSO selection was run on the preprocessed data with the goal of identifying important features to include in the data we run through our model. The input data for the LASSO selection model was first normalized, as were the output scores for both IMDb and Metascore. As shown in the figure below, for IMDb score, number of votes, duration, and budget were the three most important features.
 
-![LassoIMDb](/../Brian/assets/images/LassoIMDb.png)
+![LassoIMDb](/../Brian/LassoIMDb.png)
 
 The features selected by LASSO selection for Metascore were the same as those for IMDb, but the coefficients for the three categories were slightly higher than for IMDb. The normalized importances for each feature is shown in the graph below.
 
