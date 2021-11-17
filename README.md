@@ -33,7 +33,7 @@ We chose to use PCA to enhance variation and identify strong patterns in our dat
 LASSO provides a simple way to reduce the number of features in a model. Using the Lasso method allows the inclusion of a penalty factor, usually selected through cross validation,which is used during the penalization of the L1 norm of the weights. Compared to stepwise feature selection, the LASSO method’s inclusion of cross validation helps assure that the generated model will respond well to more generalized future input. It is also useful in that it provides a concrete feature importance coefficient for each feature. These coefficients are useful in informing the decision about which features to include in the model.
 
 #### Neural Network 
-
+A multilayer perceptron allows us to incorporate all the parameters and features we deem potentially useful in our final predictions and "package" them as an input to the model. We chose to explore this option because it would allow us to mix and match different combinations of features and it has the capabilities to produce multidimensional outputs. In our case, the output dimension is two because we would like to predict both IMDB and Metascores. In addition, the nature of IMDB and Metascores, where they can easily be normalized to a range between 0 and 1, means that the Sigmoid activation function would be particularly effective
 ### Results and Discussion
 
 #### Data Cleanup
@@ -77,6 +77,27 @@ After performing PCA, the results determined that the first 7 principal componen
 The aforementioned feature selection methods were applied to the data passed into the neural network. The output of the LASSO, forward feature selection, and backward feature selection all indicated that duration, number of votes, and budget were important features to include in the model, so these features were initially passed into the neural network to provide the results below. The PCA analysis indicates that the data is fairly complex, as 7 principle components were required to retain 95% of the variance in the data. This information was also included when determining the number of features that should be passed into the neural network.
 
 #### Neural Network
+Another method we are using to approach this problem is to use a multilayer perceptron, or neural network, which takes in a tuple of parameters (e.g. budget, number of genres, number of votes) and outputs a tuple of predicted IMDB score and Metascore. However, for the sake of debugging and tuning, the model is currently only predicting IMDB scores for now.
+
+To formulate the data into an x_train variable, we are normalizing everything using the MinMaxScaler function from sklearn.preprocessing, with the exception of IMDB and Metascores (used in y_train and y_test), as we simply normalized them by dividing all data points by 10 and 100 respectively because IMDB is scored up to 10 and Metascore is scored up to 100.
+
+An example of our scaling method:
+![MinMaxScaler Example](https://user-images.githubusercontent.com/41342635/142129599-353b8e47-0361-4427-b4b1-b9f65ee89e4f.png)
+
+For the neural network, we are using Keras and Tensorflow, especially Keras’ Sequential model-building library. 
+Here's our model:
+![NN Model](https://user-images.githubusercontent.com/41342635/142129665-46745aeb-0ed9-480a-8ddc-ee3076b6fbbd.png)
+This is our neural network as it currently stands, with two hidden layers and mainly sigmoid activation functions, since the final prediction would be scaled between 0 and 1. You can see a lot of comments demonstrating the many different loss functions, optimizers, and even additional dense layers we tried implementing to hopefully improve the model. We plan on adding more function arguments to the model, such as number_of_layers, activation_function, etc. that would allow us to quickly modify the model as needed without having to comment out code and replacing different lines, ultimately streamlining the tuning process.
+
+The hyperparameters current stand as is because it produces the lowest loss of around 0.0025 when training finalizes.
+Our training logs:
+![Training Logs](https://user-images.githubusercontent.com/41342635/142129814-81afb21b-2638-4e79-a471-8924a72d6be6.png)
+
+When comparing side-by-side the predicted vs actual values, the results are quite mixed:
+![Predicted vs Actual](https://user-images.githubusercontent.com/41342635/142129911-7c5fed8a-a79f-43ee-8f01-63c27e277547.png)
+
+We can see how some of the predictions come within a 0.01 error while others go to upwards of 0.15. This just shows that the model requires more hyper-parameter tuning before we would be able to see substantial results. After doing some more research, we believe that continuing to work on this model with the help of the KerasTuner library would be beneficial in helping us analyze exactly how many nodes per layer and how many hidden layers we would need. In regards to the activation, loss, and optimization functions, we are still in a trial stage and will have to do more research in that area to narrow down our options.
+
 
 
 ### References
