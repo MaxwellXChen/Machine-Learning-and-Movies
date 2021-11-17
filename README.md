@@ -1,7 +1,7 @@
  <p align="center"> Team Members: <br/> Maxwell Chen, Brian Epstein, Rachel Kaplan, Kaitlin Evans </p>
 
 ### Links: <br />
-<a href="http://www.something.com"> Github Page </a> <br/>
+<a href="https://github.com/MaxwellXChen/Machine-Learning-and-Movies"> Github Page </a> <br/>
 [Project Proposal](proposal.md) <br/>
 [Midterm Report](#midterm-report)   
 
