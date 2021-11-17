@@ -70,7 +70,7 @@ This indicated that a larger number of principal components were required for ou
 
 ![ExpectedVariance_2PCs](https://i.ibb.co/VmpzQwt/Expected-Var-2-PCs.png)
 
-![ExpectedVariance_0.95](https://i.ibb.co/Fkrbsgh/Expected-Var0-95.png)
+![ExpectedVariance_0.95](https://i.ibb.co/QjXZRcH/Expected-Variance.png)
  
 After performing PCA, the results determined that the first 7 principal components retained 95% of the variance in the data. In order to retain 95% of the variance, we need 7 features, which are aligned with our results from forward and backward feature selection.
 
