@@ -61,16 +61,16 @@ Looking at these results, it makes sense that both scores returned the same feat
 ##### PCA
 PCA was performed on the dataset to determine patterns in the data. First, we calculated the first and second principal components to visualize the data and identify any strong patterns. Reducing the number of features from 15 to 2 was helpful in visualizing our data, but the results determined that 2 features was not enough to retain a large portion of the variance in the data. Calculating the first and second principal components resulted in a very low explained variance, which indicated that only a small amount of variance was explained by the first two principal components.
 
-![PCA_Visualization](https://i.ibb.co/9nmX0XS/PCA-Visualization.png)
+![PCA_Visualization](https://user-images.githubusercontent.com/72058559/144654037-f0a42839-9a9f-4a92-bfce-357d36715d5e.PNG)
 
 The explained variance of the first two principal components was [0.37943203, 0.12747816]
 The explained variance of the first principal component is below 40%, and the second is close to 10%, indicating that just the first two principal components do not retain much of the variance. While it was helpful to visualize our data, we decided that reducing the data to only the first two principal components would not be a useful model.
 
 This indicated that a larger number of principal components were required for our data. We then chose to run PCA again, this time looking at only the first two principal components. We ran the model with the goal of explaining 95% of the variance. 
 
-![ExpectedVariance_2PCs](https://i.ibb.co/VmpzQwt/Expected-Var-2-PCs.png)
+![ExpectedVar_2PCs](https://user-images.githubusercontent.com/72058559/144654068-070a8e8d-0469-465a-ae34-02ab941cdc7c.PNG)
 
-![ExpectedVariance_0.95](https://i.ibb.co/QjXZRcH/Expected-Variance.png)
+![ExpectedVar0 95](https://user-images.githubusercontent.com/72058559/144654086-3b9bb92a-9665-4665-865a-d12abc42d0a7.PNG)
  
 After performing PCA, the results determined that the first 7 principal components retained 95% of the variance in the data. In order to retain 95% of the variance, we need 7 features, which are aligned with our results from forward and backward feature selection.
 
