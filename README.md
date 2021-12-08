@@ -142,21 +142,26 @@ We found that the model did very well, while it only had the 40% for explained v
 Model setup: Before even thinking about building the model, we normalized all data to a 0 to 1 range using sklearn.preprocessing’s MinMaxScaler library. Next, we would “bundle” up all the features we were considering: Number of genres, number of countries, runtimes, and budgets. In addition, we determined it appropriate to split the training and testing/validation set into an 80-20 split. 
 
 Our scaling and training/validation splitting process:
+
 ![Normalize and Splitting](https://user-images.githubusercontent.com/41342635/145160411-bb17587b-57ec-45ef-b1ab-ce22990fde37.png)
 
 Model Building: The input to our model would be a list of these bundled up features as a singular input, and the output being an IMDB score but scaled from 0 to 1. We built our sequential model from Keras and began with a Dense layer with the “relu” activation function, which we felt was standard and a safe bet for every model. We then have two larger Dense layers with sigmoid activation functions as we are ultimately attempting to predict a score from 0 to 1 (IMDB scaled down by a factor of 10) and sigmoid does that perfectly as, intuitively, the graph itself falls in the range 0 to 1 due to the horizontal asymptotes. In our model.compile function call, we found that mean_squared_logarithmic_error gave us the best results, and we used an adam optimizer (which is also quite standard). Finally, we ran 100 epochs each with a batch size of 50.
 
 Our Findal Model:
+
 ![Sequential model](https://user-images.githubusercontent.com/41342635/145160633-63b58cf6-363c-4177-97c0-4a517a6ae193.png)
 
 Our Model Training Process:
+
 ![image](https://user-images.githubusercontent.com/41342635/145161019-69314e0a-2979-4ada-9029-28259ad6634c.png)
+
 The loss we achieved with the model ended up being a solid 0.0035, which led to an effective model for predicting IMDB scores.
 
 
 Accuracy calculation: In determining the accuracy of our model, we used quite a simple method. A predicted output would be classified as accurate if the positive difference between it and the actual value falls within a specified threshold. For example, if our error threshold is 0.1, meaning an IMDB score difference of 1, a predicted point would count as accurate if abs(predicted-actual) <= 0.1.
 
 Our accuracy method and calculation:
+
 ![Accuracy](https://user-images.githubusercontent.com/41342635/145160780-f39bb169-73ea-4e28-980f-e6ecd978f04f.png)
 
 
