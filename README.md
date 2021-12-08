@@ -13,6 +13,8 @@ The movie industry is an essential part of recreation and entertainment for bill
 ### Problem Definition
 Given various parameters of a movie, such as genre, Metascore, IMDb score, budget, runtime, and production country, our project aims to predict the gross income of the film. This serves to provide movie producers with the information that will be useful in predicting the critical and commercial success of projects that are in development, allowing them to optimize their movie’s parameters to maximize profits. 
 
+Additionally, the models will be applied to the task of predicting the IMDb score of a movie. This would be useful in determining a movie's potential popularity among internet reviewers, which could be an early indicator of a movie's success or failure at the box office.
+
 ### Data Collection
 The data used for our project was collected using the kaggle dataset "IMDb movies extensive dataset". This dataset contains 85,855 movies and 22 unique attributes. The movies chosen had received more than 100 votes towards their average IMDb score as of 01/01/2020.
 
@@ -22,6 +24,8 @@ The data used for our project was collected using the kaggle dataset "IMDb movie
 The original data was sparse, and had around 85,000 entries. In order to use this dataset, sparse entries first needed to be removed. Initially we identified features in the data that could not easily be converted to a numerical value, such as the movie description, writer, and actors, and removed these features. Next we went through and removed entries that did not have data for each of the remaining features. After this step, the char vectors that represented numbers like budget and gross income needed to be converted to double values. Finally, features like language and country were converted from lists of the actual languages and countries to the quantity of languages and countries for each entry. This conversion was made on the presumption that a movie that was released in more languages or countries would appeal to a wider audience, thus making these features relevant to our model.
 
 #### Data preprocessing 
+Data preprocessing for the IMDb score predictions was limited, as the input data already had few features. This was because the nature of attempting to predict the score based only on information known at the release of the movie removes some features such as number of votes and gross income, inherently.
+
 For Data preprocessing, we chose to employ 4 different methods using our cleaned dataset. We implemented forward feature selection and backward feature selection as well as the dimensionality reduction methods PCA and lasso regression. When implementing these methods, we dropped the features title, original title, and usa gross income as they disrupted the results of our methods. 
 
 ##### Forward and Backward Feature Selection
@@ -69,19 +73,30 @@ Forward and backward feature selection were run on worldwide gross income. The t
 Looking at these results, it makes sense that reviews -both IMDb and metascore- should be important features when predicting the model as they can provide a general idea of the popularity of a movie. However, it is interesting that a movie’s budget would have an impact on the success of a movie. Perhaps the budget would assume more marketing materials and therefore more exposure. 
 
 ##### PCA
-PCA was performed on the dataset to determine patterns in the data. First, we calculated the first and second principal components to visualize the data and identify any strong patterns. Reducing the number of features from 15 to 2 was helpful in visualizing our data, but the results determined that 2 features was not enough to retain a large portion of the variance in the data. Calculating the first and second principal components resulted in a very low explained variance, which indicated that only a small amount of variance was explained by the first two principal components.
+PCA was performed on the dataset to determine patterns in the data. For the IMDb scores. First, we calculated the first and second principal components to visualize the data and identify any strong patterns. Reducing the number of features from 15 to 2 was helpful in visualizing our data, but the results determined that 2 features was not enough to retain a large portion of the variance in the data. Calculating the first and second principal components resulted in a very low explained variance, which indicated that only a small amount of variance was explained by the first two principal components.
 
-![pca](https://user-images.githubusercontent.com/40035500/145120268-74de140c-af33-4a19-9d12-baa7abf51a2a.png)
-![pca 2](https://user-images.githubusercontent.com/40035500/145120331-52a4e501-16cb-4f91-89cd-1581f374717b.png)
+![PCA_Visualization_IMDB](https://user-images.githubusercontent.com/72058559/145155346-ca80c5e1-0f33-43f3-9e96-f6ff69429957.PNG)
+![ExpectedVar_2PCs_IMDB](https://user-images.githubusercontent.com/72058559/145155365-3a464b23-3eda-4317-bb2e-a82fdd22808f.PNG)
 
-The explained variance of the first two principal components was [0.30134129, 0.14838675].
+The explained variance of the first two principal components was [0.29740404, 0.14722416].
 The explained variance of the first principal component is about 30%, and the second is close to 15%, indicating that just the first two principal components do not retain much of the variance. While it was helpful to visualize our data, we decided that reducing the data to only the first two principal components would not be a useful model.
 
 This indicated that a larger number of principal components were required for our data. We then chose to run PCA again, this time with the goal of explaining 95% of the variance. 
 
-![pca3](https://user-images.githubusercontent.com/40035500/145120392-17caadf8-f2b9-4aee-8082-25347f52631a.png)
+![ExpectedVar0 95_IMDB](https://user-images.githubusercontent.com/72058559/145155414-216c8d7e-cc3c-413b-bf1c-750a17bab5f5.PNG)
 
-After performing PCA, the results determined that the first 9 principal components retained 95% of the variance in the data. In order to retain 95% of the variance, we need 9 features, which are aligned with our results from forward and backward feature selection.
+After performing PCA, the results determined that the first 7 principal components retained 95% of the variance in the data for the IMDb score predictive model.
+
+Next, we followed the same process for the Worldwide Gross Income data predictions. We first visualized the first two principal components to see if there were any strong trends.
+
+![PCA_Visualization_Income](https://user-images.githubusercontent.com/72058559/145155471-6e69553b-bda5-49d2-abd8-73db939802e5.PNG)
+![ExpectedVar_2PCs_Income](https://user-images.githubusercontent.com/72058559/145155617-5ee2fed4-7d19-4e4d-b7f0-03d481f8e3ca.PNG)
+
+The explained variance of the first two principal components was [0.30134129, 0.14838675]. Similar to the results for the IMDb score, the explained variance for the first and second principal components were roughly 30% and 15%, respectively. We chose to run PCA again, this time with the goal of explaining 95% of the variance. 
+
+![ExpectedVar0 95_Income](https://user-images.githubusercontent.com/72058559/145155635-612dd4b4-7475-43b1-aab2-0681184126f3.PNG)
+
+After performing PCA, the results determined that the first 9 principal components retained 95% of the variance in the data for the IMDb score predictive model.
 
 ##### LASSO Regression
 
@@ -91,9 +106,17 @@ LASSO selection was run on the preprocessed data with the goal of identifying im
 #### Models
 
 ##### Principal Component Regression
-The results of PCA were that 95% of the variance was retained in the first 9 principal components. Using these 9 principal components, we chose to run regression to predict the worldwide gross income of a movie. Once we had a regression model, we were able to use the model to predict the gross income for our test data and compare it with the actual values. Note that the below graph utilizes the first principal component to plot the data, so it is not a complete visualization since we cannot visualize 9 dimensions. However, below is a visualization of the first principal component with the actual and predicted gross income of the movie.
+For our IMDb score predictive model, the results of PCA were that 95% of the variance was retained in the first 7 principal components. Using these 7 components, we chose to run regression to predict the IMDb score of a movie. Once we had a regression model, we were able to use the model to predict the IMDb score for our test data and compare it with the actual values. 
 
-![pcr](https://user-images.githubusercontent.com/40035500/145120654-bc88f3ab-81a0-4e5a-8ab8-243e530ceaa7.png)
+Note that the below graph utilizes the first principal component to plot the data, so it is not a complete visualization since we cannot visualize 7 dimensions. However, below is a visualization of the first principal component with the actual and predicted gross income of the movie.
+
+![PCRModel_IMDB](https://user-images.githubusercontent.com/72058559/145155732-4950fb7e-7ef6-4927-81e2-5d4dcf3f54f7.PNG)
+
+As seen, the model did relatively well in portraying the shape of the data. Additionally, the explained variance score for this model was 0.2695169658852692, which means that roughly 27% of the variation in the dataset is explained by this model. Additionally, the mean squared error value for this data was 0.73, which is relatively low and indicates a pretty good model.
+
+For the worldwide gross income predictive model, the results of PCA were that 95% of the variance was retained in the first 9 principal components. Using these 9 principal components, we chose to run regression to predict the worldwide gross income of a movie. We used this model to predict the gross income for our test data and compare it with the actual values. Again, the graph below is just the first principal component plotted versus the worldwide gross income.
+
+![PCRModel_Income](https://user-images.githubusercontent.com/72058559/145155769-945beafe-a5c7-4f0c-abb9-0a2a545cc564.PNG)
 
 As seen, the model did relatively well in portraying the shape of the data. Additionally, the explained variance score for this model was 0.6593771996946548, which means that roughly 66% of the variation in the dataset is explained by this model. 
 
@@ -108,7 +131,7 @@ We found that budget was actually the feature with the highest importance (0.52)
 
 The explained variance score for this model was 0.7301520036631554, which means that roughly 73% of the variance in the dataset is explained by the model. Compared to the Principal Component Regression method, Random Forest Regression explains a slightly larger percentage of the variance, but both could be better.
 
-We also performed Random Forest Regression on IMDb score to see how our original problem statement fit into the new model. 
+We also performed Random Forest Regression on IMDb score.
 
 <img width="403" alt="imdb score" src="https://user-images.githubusercontent.com/40035500/145153741-d8956c03-5131-4d29-a335-1063803eff9f.png">
 
