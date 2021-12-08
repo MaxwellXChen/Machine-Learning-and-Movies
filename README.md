@@ -73,7 +73,7 @@ Forward and backward feature selection were run on worldwide gross income. The t
 Looking at these results, it makes sense that reviews -both IMDb and metascore- should be important features when predicting the model as they can provide a general idea of the popularity of a movie. However, it is interesting that a movie’s budget would have an impact on the success of a movie. Perhaps the budget would assume more marketing materials and therefore more exposure. 
 
 ##### PCA
-PCA was performed on the dataset to determine patterns in the data. For the IMDb scores. First, we calculated the first and second principal components to visualize the data and identify any strong patterns. Reducing the number of features from 15 to 2 was helpful in visualizing our data, but the results determined that 2 features was not enough to retain a large portion of the variance in the data. Calculating the first and second principal components resulted in a very low explained variance, which indicated that only a small amount of variance was explained by the first two principal components.
+PCA was performed on the dataset to determine patterns in the data for the IMDb scores. First, we calculated the first and second principal components to visualize the data and identify any strong patterns. Reducing the number of features from 15 to 2 was helpful in visualizing our data, but the results determined that 2 features was not enough to retain a large portion of the variance in the data. Calculating the first and second principal components resulted in a very low explained variance, which indicated that only a small amount of variance was explained by the first two principal components.
 
 ![PCA_Visualization_IMDB](https://user-images.githubusercontent.com/72058559/145155346-ca80c5e1-0f33-43f3-9e96-f6ff69429957.PNG)
 ![ExpectedVar_2PCs_IMDB](https://user-images.githubusercontent.com/72058559/145155365-3a464b23-3eda-4317-bb2e-a82fdd22808f.PNG)
@@ -112,13 +112,13 @@ Note that the below graph utilizes the first principal component to plot the dat
 
 ![PCRModel_IMDB](https://user-images.githubusercontent.com/72058559/145155732-4950fb7e-7ef6-4927-81e2-5d4dcf3f54f7.PNG)
 
-As seen, the model did relatively well in portraying the shape of the data. Additionally, the explained variance score for this model was 0.2695169658852692, which means that roughly 27% of the variation in the dataset is explained by this model. Additionally, the mean squared error value for this data was 0.73, which is relatively low and indicates a pretty good model.
+As seen, the model did relatively well in portraying the shape of the data. Additionally, the explained variance score for this model was 0.26952, which means that roughly 27% of the variation in the dataset is explained by this model. Additionally, the mean squared error value for this data was 0.72776, which is relatively low and indicates a pretty good model.
 
 For the worldwide gross income predictive model, the results of PCA were that 95% of the variance was retained in the first 9 principal components. Using these 9 principal components, we chose to run regression to predict the worldwide gross income of a movie. We used this model to predict the gross income for our test data and compare it with the actual values. Again, the graph below is just the first principal component plotted versus the worldwide gross income.
 
 ![PCRModel_Income](https://user-images.githubusercontent.com/72058559/145155769-945beafe-a5c7-4f0c-abb9-0a2a545cc564.PNG)
 
-As seen, the model did relatively well in portraying the shape of the data. Additionally, the explained variance score for this model was 0.6593771996946548, which means that roughly 66% of the variation in the dataset is explained by this model. 
+As seen, the model did relatively well in portraying the shape of the data. Additionally, the explained variance score for this model was 0.6593772, which means that roughly 66% of the variation in the dataset is explained by this model. 
 
 ##### Random Forest Regression
 We performed a random forest regression model to determine if this would be a better fit for our data. After running this model, we looked at the importance of all the features to determine which would be the best feature to predict the income. 
@@ -129,14 +129,13 @@ We found that budget was actually the feature with the highest importance (0.52)
 
 ![rfr2](https://user-images.githubusercontent.com/40035500/145120773-c92e8b93-ec0f-4f65-a836-67b4440943e4.png)
 
-The explained variance score for this model was 0.7301520036631554, which means that roughly 73% of the variance in the dataset is explained by the model. Compared to the Principal Component Regression method, Random Forest Regression explains a slightly larger percentage of the variance, but both could be better.
+The explained variance score for this model was 0.730152, which means that roughly 73% of the variance in the dataset is explained by the model. Compared to the Principal Component Regression method, Random Forest Regression explains a slightly larger percentage of the variance, but both could be better.
 
-We also performed Random Forest Regression on IMDb score.
+We also performed Random Forest Regression to predict the IMDb score.
 
 <img width="403" alt="imdb score" src="https://user-images.githubusercontent.com/40035500/145153741-d8956c03-5131-4d29-a335-1063803eff9f.png">
 
 We found that the model did very well, while it only had the 40% for explained variance, the accuracy was nearly 90%, with the both mean squared and mean absolute error very low. Overall, the model performed very well with IMDb score, even though it did not have as high of an explained variance as worldwide gross income. 
-
 
 ##### Neural Network
 
