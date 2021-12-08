@@ -111,11 +111,11 @@ LASSO selection was run on the preprocessed data with the goal of identifying im
 ##### Principal Component Regression
 For our IMDb score predictive model, the results of PCA were that 95% of the variance was retained in the first 7 principal components. Using these 7 components, we chose to run regression to predict the IMDb score of a movie. Once we had a regression model, we were able to use the model to predict the IMDb score for our test data and compare it with the actual values. 
 
-Note that the below graph utilizes the first principal component to plot the data, so it is not a complete visualization since we cannot visualize 7 dimensions. However, below is a visualization of the first principal component with the actual and predicted gross income of the movie.
+Note that the below graph utilizes the first principal component to plot the data, so it is not a complete visualization since we cannot visualize 7 dimensions. However, below is a visualization of the first principal component with the actual and predicted IMDb score of the movie.
 
 ![PCRModel_IMDB](https://user-images.githubusercontent.com/72058559/145155732-4950fb7e-7ef6-4927-81e2-5d4dcf3f54f7.PNG)
 
-As seen, the model did relatively well in portraying the shape of the data. Additionally, the explained variance score for this model was 0.26952, which means that roughly 27% of the variation in the dataset is explained by this model. Additionally, the mean squared error value for this data was 0.72776, which is relatively low and indicates a pretty good model.
+As seen, the model did relatively well in portraying the shape of the data. Additionally, the explained variance score for this model was 0.26952, which means that roughly 27% of the variation in the dataset is explained by this model. The mean squared error value for this data was 0.72776, which is relatively low and indicates a pretty good model.
 
 For the worldwide gross income predictive model, the results of PCA were that 95% of the variance was retained in the first 9 principal components. Using these 9 principal components, we chose to run regression to predict the worldwide gross income of a movie. We used this model to predict the gross income for our test data and compare it with the actual values. Again, the graph below is just the first principal component plotted versus the worldwide gross income.
 
