@@ -139,7 +139,34 @@ We found that the model did very well, while it only had the 40% for explained v
 
 ##### Neural Network
 
+Model setup: Before even thinking about building the model, we normalized all data to a 0 to 1 range using sklearn.preprocessing’s MinMaxScaler library. Next, we would “bundle” up all the features we were considering: Number of genres, number of countries, runtimes, and budgets. In addition, we determined it appropriate to split the training and testing/validation set into an 80-20 split. 
+
+Our scaling and training/validation splitting process:
+![Normalize and Splitting](https://user-images.githubusercontent.com/41342635/145160411-bb17587b-57ec-45ef-b1ab-ce22990fde37.png)
+
+Model Building: The input to our model would be a list of these bundled up features as a singular input, and the output being an IMDB score but scaled from 0 to 1. We built our sequential model from Keras and began with a Dense layer with the “relu” activation function, which we felt was standard and a safe bet for every model. We then have two larger Dense layers with sigmoid activation functions as we are ultimately attempting to predict a score from 0 to 1 (IMDB scaled down by a factor of 10) and sigmoid does that perfectly as, intuitively, the graph itself falls in the range 0 to 1 due to the horizontal asymptotes. In our model.compile function call, we found that mean_squared_logarithmic_error gave us the best results, and we used an adam optimizer (which is also quite standard). Finally, we ran 100 epochs each with a batch size of 50.
+
+Our Findal Model:
+![Sequential model](https://user-images.githubusercontent.com/41342635/145160633-63b58cf6-363c-4177-97c0-4a517a6ae193.png)
+
+Our Model Training Process:
+![image](https://user-images.githubusercontent.com/41342635/145161019-69314e0a-2979-4ada-9029-28259ad6634c.png)
+The loss we achieved with the model ended up being a solid 0.0035, which led to an effective model for predicting IMDB scores.
+
+
+Accuracy calculation: In determining the accuracy of our model, we used quite a simple method. A predicted output would be classified as accurate if the positive difference between it and the actual value falls within a specified threshold. For example, if our error threshold is 0.1, meaning an IMDB score difference of 1, a predicted point would count as accurate if abs(predicted-actual) <= 0.1.
+
+Our accuracy method and calculation:
+![Accuracy](https://user-images.githubusercontent.com/41342635/145160780-f39bb169-73ea-4e28-980f-e6ecd978f04f.png)
+
+
+Prediction results: With an error threshold of 0.1, our accuracy function deemed ~77% of predicted values as accurate. With an error threshold of 0.05, our accuracy function deemed ~50% of the predicted output as accurate. In addition, removing budgets as a parameter actually raised the accuracy to 78%, which is likely explained by the high variance within budgets, causing the normalization process to be quite awkward as some values could go as low as 10e-7.
+
+Note: For all code on the neural network, please navigate to the “Maxwell” branch and open “MLP.ipynb”.
+
+
 ### Conclusion
 
+When comparing our models, we see some major similarities in that they all perform pretty well when predicting IMDB scores (with Random Forest regression being the best performer), and perform poorly when it comes to predicting worldwide gross income. We believe this is due to the fact that IMDB scores are much easier to normalize because a range of 1-10 can easily be normalize to 0-1, whereas a normalization process with worldwide gross income gets complicated, as we see in our dataset that the range of this feature goes from as low as $95 to as high as $2.8 billion. Therefore, fitting that range into a tiny confinement of 0-1 would be a nightmare, as we would have extremely small numbers that eventually only serve to skew the model’s predictive capabilities. All in all, our team found through our models that, based on our feature selection criteria, it’s extremely easy to find similarly-classified movies with close to identical features. The model would then, of course, treat those two inputs as essentially identical. However, two similarly-classified movies could have wildly different worldwide gross incomes due to the nature of the movie industry with how big-budget blockbuster productions usually perform well in worldwide theaters, whereas small indie productions wouldn’t have as expansive of a reach. In addition, the quality of the movie is not usually indicative of its box office performance, and many similarly-classified movies could perform very differently based on how much is invested in post-production marketing. Therefore, there’s a good amount of factors that we weren’t able to include in our models due to limitations with the dataset, but the models presented above are, in our opinion, an effective yet intuitive way to gauge the potential success of a movie.
 
 
