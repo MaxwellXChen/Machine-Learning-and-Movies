@@ -55,6 +55,13 @@ The data clean up resulted in a dataset containing 6083 movies with 15 features.
 #### Data preprocessing
 
 ##### Forward and Backward Feature Selection
+Forward and backward feature selection were run on IMDb score. The target returned the following features.
+
+<img width="752" alt="imdb" src="https://user-images.githubusercontent.com/40035500/145153687-6a3afe16-e0ff-49c1-94cb-ed3038627d72.png">
+
+Looking at these results, it is interesting that the IMDb score returned year and duration as some of the most important features for both forward and backward feature selection. This shows that movie length has a large impact on score and people are probably more critical of very long or very short movies. Additionally, older movies are probably rated very differently from newer movies as they were originally rated and reviewed in a very different setting than how newer movies are rated and reviewed. 
+
+
 Forward and backward feature selection were run on worldwide gross income. The target returned the following features. 
 
 <img width="770" alt="Screen Shot 2021-12-07 at 6 00 38 PM" src="https://user-images.githubusercontent.com/40035500/145120049-b64b9a67-b83e-4f3d-b32d-fe07bc0e4a55.png">
@@ -100,6 +107,13 @@ We found that budget was actually the feature with the highest importance (0.52)
 ![rfr2](https://user-images.githubusercontent.com/40035500/145120773-c92e8b93-ec0f-4f65-a836-67b4440943e4.png)
 
 The explained variance score for this model was 0.7301520036631554, which means that roughly 73% of the variance in the dataset is explained by the model. Compared to the Principal Component Regression method, Random Forest Regression explains a slightly larger percentage of the variance, but both could be better.
+
+We also performed Random Forest Regression on IMDb score to see how our original problem statement fit into the new model. 
+
+<img width="403" alt="imdb score" src="https://user-images.githubusercontent.com/40035500/145153741-d8956c03-5131-4d29-a335-1063803eff9f.png">
+
+We found that the model did very well, while it only had the 40% for explained variance, the accuracy was nearly 90%, with the both mean squared and mean absolute error very low. Overall, the model performed very well with IMDb score, even though it did not have as high of an explained variance as worldwide gross income. 
+
 
 ##### Neural Network
 
